@@ -1,18 +1,107 @@
 {
   "tools": [
-    {"name":"ChatGPT","description":"Idéer, utkast, analys och återkoppling.","url":"https://chatgpt.com/","accent":"#18a989","mark":"◎"},
-    {"name":"Claude","description":"Resonera, skriva och arbeta med längre underlag.","url":"https://claude.ai/","accent":"#df7e5d","mark":"Claude"},
-    {"name":"Gamma","description":"Skapa presentationer och visuella berättelser.","url":"https://gamma.app/","accent":"#8063ee","mark":"G"},
-    {"name":"NotebookLM","description":"Utforska egna källor, dokument och frågor.","url":"https://notebooklm.google.com/","accent":"#2b78d0","mark":"NotebookLM"},
-    {"name":"Consensus","description":"Sök och orientera dig i forskning.","url":"https://consensus.app/","accent":"#c53591","mark":"⌁"},
-    {"name":"ElevenLabs","description":"Röst, tal och ljud från text.","url":"https://elevenlabs.io/","accent":"#161616","mark":"Ⅱ"},
-    {"name":"Lovable","description":"Skapa enkla digitala lösningar genom dialog.","url":"https://lovable.dev/","accent":"#ff6945","mark":"♥"}
+    {
+      "name": "ChatGPT",
+      "description": "Idéer, utkast, analys och återkoppling.",
+      "url": "https://chatgpt.com/",
+      "accent": "#18a989",
+      "mark": "◎"
+    },
+    {
+      "name": "Claude",
+      "description": "Resonera, skriva och arbeta med längre underlag.",
+      "url": "https://claude.ai/",
+      "accent": "#df7e5d",
+      "mark": "Claude"
+    },
+    {
+      "name": "Gamma",
+      "description": "Skapa presentationer och visuella berättelser.",
+      "url": "https://gamma.app/",
+      "accent": "#8063ee",
+      "mark": "G"
+    },
+    {
+      "name": "NotebookLM",
+      "description": "Utforska egna källor, dokument och frågor.",
+      "url": "https://notebooklm.google.com/",
+      "accent": "#2b78d0",
+      "mark": "NotebookLM"
+    },
+    {
+      "name": "Consensus",
+      "description": "Sök och orientera dig i forskning.",
+      "url": "https://consensus.app/",
+      "accent": "#c53591",
+      "mark": "⌁"
+    },
+    {
+      "name": "ElevenLabs",
+      "description": "Röst, tal och ljud från text.",
+      "url": "https://elevenlabs.io/",
+      "accent": "#161616",
+      "mark": "Ⅱ"
+    },
+    {
+      "name": "Lovable",
+      "description": "Skapa enkla digitala lösningar genom dialog.",
+      "url": "https://lovable.dev/",
+      "accent": "#ff6945",
+      "mark": "♥"
+    }
   ],
   "apps": [
-    {"name":"Programplaneraren","description":"Planera, visa och samla material för en workshop.","url":"https://tringenr.github.io/ai-workshop-programplanerare/Workshopprogram.html","image":"","accent":"#bf348e"},
-    {"name":"Skolplanering","description":"Synkade kalendrar och planeringar för barnens skolgång.","url":"https://tringenr.github.io/Skolplanering/","image":"assets/skolplanering-thumb.png","accent":"#18a989"},
-    {"name":"Bokhyllan","description":"En egen app för att utforska och organisera böcker.","url":"https://tringenr.github.io/bokhyllan/","image":"assets/bokhyllan-thumb.png","accent":"#bf348e"},
-    {"name":"Bilkalkylen","description":"En enkel kalkyl för att jämföra bilkostnader.","url":"https://tringenr.github.io/bilkalkylen/","image":"assets/bilkalkylen-thumb.png","accent":"#f29441"},
-    {"name":"Beteendeguide","description":"Lära sig TBA","url":"https://tringenr.github.io/beteendeguide/","image":"","accent":"#bf348e","mark":"●"}
+    {
+      "name": "Programplaneraren",
+      "description": "Planera, visa och samla material för en workshop.",
+      "url": "https://tringenr.github.io/ai-workshop-programplanerare/Workshopprogram.html",
+      "image": "",
+      "accent": "#bf348e"
+    },
+    {
+      "name": "Skolplanering",
+      "description": "Synkade kalendrar och planeringar för barnens skolgång.",
+      "url": "https://tringenr.github.io/Skolplanering/",
+      "image": "assets/skolplanering-thumb.png",
+      "accent": "#18a989"
+    },
+    {
+      "name": "Bokhyllan",
+      "description": "En egen app för att utforska och organisera böcker.",
+      "url": "https://tringenr.github.io/bokhyllan/",
+      "image": "assets/bokhyllan-thumb.png",
+      "accent": "#bf348e"
+    },
+    {
+      "name": "Bilkalkylen",
+      "description": "En enkel kalkyl för att jämföra bilkostnader.",
+      "url": "https://tringenr.github.io/bilkalkylen/",
+      "image": "assets/bilkalkylen-thumb.png",
+      "accent": "#f29441"
+    },
+    {
+      "name": "Beteendeguide",
+      "description": "Lära sig TBA",
+      "url": "https://tringenr.github.io/beteendeguide/",
+      "image": "",
+      "accent": "#bf348e",
+      "mark": "●"
+    },
+    {
+      "name": "Hitta pass",
+      "description": "Kort beskrivning.",
+      "url": "https://nordic-pass-finder.lovable.app/",
+      "mark": "●",
+      "image": "",
+      "accent": "#bf348e"
+    },
+    {
+      "name": "Boka möten",
+      "description": "Kort beskrivning.",
+      "url": "https://easy-time-share.lovable.app",
+      "mark": "●",
+      "image": "",
+      "accent": "#bf348e"
+    }
   ]
 }
