@@ -1,29 +1,7 @@
 name: Patch planner selector
-on: push
-permissions:
-  contents: write
+on: workflow_dispatch
 jobs:
-  patch:
-    if: ${{ !contains(github.event.head_commit.message, '[skip patch]') }}
+  disabled:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - name: Patch planner
-        run: |
-          python3 - <<'PY'
-          from pathlib import Path
-          p=Path('Workshopprogram.html')
-          s=p.read_text(encoding='utf-8')
-          if 'program-switcher-2-oct' not in s:
-              snippet='''<style id="program-switcher-2-oct">#program-switcher-box{position:fixed;right:18px;top:18px;z-index:99999;display:flex;align-items:center;gap:8px;padding:10px 12px;border:1px solid #ead8d5;border-radius:12px;background:rgba(255,255,255,.97);box-shadow:0 8px 24px rgba(91,44,60,.14);font-family:Montserrat,Arial,sans-serif;color:#35212d}#program-switcher-box label{font-size:12px;font-weight:700}#program-switcher-box select{border:1px solid #d9c5c2;border-radius:8px;background:#fff;color:#35212d;padding:7px 28px 7px 9px;font:600 13px Montserrat,Arial,sans-serif}@media(max-width:700px){#program-switcher-box{left:10px;right:10px;top:10px;justify-content:space-between}#program-switcher-box select{max-width:68vw}}</style><div id="program-switcher-box"><label for="program-switcher-select">Program</label><select id="program-switcher-select"><option value="Workshopprogram.html">AI-workshop</option><option value="2-okt-konflikt-ws-molndal.html">2 okt konflikt-ws Mölndal</option></select></div><script>(function(){const s=document.getElementById('program-switcher-select');if(s)s.addEventListener('change',function(){location.href=this.value})})();</script>'''
-              s=s.replace('</body>',snippet+'</body>',1)
-              p.write_text(s,encoding='utf-8')
-          PY
-      - name: Commit
-        run: |
-          if git diff --quiet; then exit 0; fi
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add Workshopprogram.html
-          git commit -m "Add program selector [skip patch]"
-          git push
+      - run: echo "Manual-only placeholder; automatic patching disabled."
