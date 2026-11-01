@@ -8,23 +8,307 @@
 *{box-sizing:border-box}html,body{margin:0;height:100%;font-family:Arial,sans-serif;background:#f2eae4;color:#35212d}
 .bar{height:64px;display:flex;align-items:center;gap:12px;padding:10px 18px;background:#fff;border-bottom:1px solid #e8d6dc;box-shadow:0 2px 8px rgba(53,33,45,.08);position:relative;z-index:2}
 .bar strong{font-size:15px}.bar select{min-width:min(470px,65vw);padding:10px 12px;border:1px solid #d9aac8;border-radius:9px;background:#fff;color:#35212d;font-size:15px}
+.bar button{border:1px solid #d9aac8;background:#fff;color:#35212d;padding:10px 14px;border-radius:9px;font-size:14px;font-weight:700;cursor:pointer;white-space:nowrap}
+.bar button:hover{background:#fbeef3}
+.bar button.primary{background:#b84e78;border-color:#b84e78;color:#fff}.bar button.primary:hover{background:#9f3f65}
 iframe{display:block;width:100%;height:calc(100% - 64px);border:0;background:#fff}
 @media(max-width:700px){.bar{height:auto;min-height:64px;align-items:stretch;flex-direction:column;gap:6px}.bar select{min-width:0;width:100%}iframe{height:calc(100% - 92px)}}
+
+/* --- editor overlay --- */
+#editorOverlay{display:none;position:fixed;inset:0;background:rgba(53,33,45,.45);z-index:10;overflow:auto;padding:30px 16px}
+#editorOverlay.open{display:block}
+.editor{max-width:900px;margin:0 auto;background:#fffaf7;border-radius:18px;box-shadow:0 20px 60px rgba(53,33,45,.3);padding:28px 26px 34px}
+.editor h2{margin:0 0 4px;font-size:24px}
+.editor p.hint{margin:0 0 20px;color:#78636e;font-size:14px;line-height:1.4}
+.editor label{display:block;font-size:13px;font-weight:700;color:#5f4a56;margin:0 0 5px}
+.field-row{display:grid;grid-template-columns:1fr 1fr 110px;gap:12px;margin-bottom:14px}
+.field-row.single{grid-template-columns:1fr}
+.editor input[type=text],.editor input[type=number],.editor textarea,.editor select{width:100%;border:1px solid #ead8d5;border-radius:8px;padding:9px 10px;font-size:14px;font-family:inherit;background:#fff;color:#35212d}
+.editor textarea{resize:vertical;min-height:52px}
+#blocks{display:flex;flex-direction:column;gap:10px;margin:18px 0}
+.blockRow{border:1px solid #ead8d5;border-radius:12px;padding:14px;background:#fff}
+.blockRow .top{display:grid;grid-template-columns:90px 1fr 150px auto;gap:10px;margin-bottom:10px;align-items:end}
+.blockRow .texts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.blockTime{font:700 13px Arial;color:#b84e78;align-self:center;padding-bottom:9px}
+.iconbtn{border:1px solid #ead8d5;background:#fff;border-radius:7px;width:34px;height:34px;cursor:pointer;font-size:15px;line-height:1}
+.iconbtn:hover{background:#fbeef3}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px;justify-content:space-between}
+.actions .left,.actions .right{display:flex;gap:10px;flex-wrap:wrap}
+.smallnote{font-size:12px;color:#78636e;margin-top:14px;line-height:1.5}
 </style>
 </head>
 <body>
-<div class="bar"><strong>Välj program</strong>
+<div class="bar">
+<strong>Välj program</strong>
 <select id="program">
 <option value="AI-organisationspsykologens-vardag.html">AI i organisationspsykologens vardag</option>
 <option value="Halvdag-ledningsgruppen.html">Halvdag med ledningsgruppen</option>
 <option value="2-okt-konflikt-ws-molndal.html">2 okt konflikt-ws Mölndal</option>
 <option value="4-nov-rollworkshop-rfsu.html">4 nov rollworkshop RFSU</option>
-</select></div>
+</select>
+<button id="newProgramBtn" class="primary">+ Nytt program</button>
+</div>
 <iframe id="view" title="Program" src="AI-organisationspsykologens-vardag.html"></iframe>
+
+<div id="editorOverlay">
+<div class="editor">
+<h2>Nytt program</h2>
+<p class="hint">Fyll i rubrik och lägg till block i ordning. Tiderna räknas ut automatiskt utifrån starttid och längd per block. Programmet sparas i den här webbläsaren och visas direkt i listan — ladda ner filen om du vill lägga in den permanent i webbplatsen.</p>
+
+<div class="field-row">
+  <div><label>Titel</label><input type="text" id="progTitle" placeholder="T.ex. 20 nov strategidag"></div>
+  <div><label>Underrubrik</label><input type="text" id="progSubtitle" placeholder="Kort beskrivning av dagen"></div>
+  <div><label>Starttid</label><input type="text" id="progStart" placeholder="09.00" value="09.00"></div>
+</div>
+
+<div id="blocks"></div>
+
+<button class="iconbtn" id="addBlockBtn" style="width:auto;padding:9px 14px;font-weight:700;font-size:13px">+ Lägg till block</button>
+
+<div class="actions">
+  <div class="left">
+    <button id="cancelEditor">Avbryt</button>
+  </div>
+  <div class="right">
+    <button id="downloadBtn">Ladda ner HTML</button>
+    <button id="saveBtn" class="primary">Spara &amp; visa</button>
+  </div>
+</div>
+<p class="smallnote">Sparas lokalt i webbläsaren (localStorage) på den här enheten. Vill du att programmet ska synas för alla som öppnar sidan på nätet, ladda ner filen och be om att få den inlagd i webbplatsens filer.</p>
+</div>
+</div>
+
 <script>
 const select=document.getElementById('program'),view=document.getElementById('view');
+const blobUrls={};
+
+/* ---- load custom programs saved earlier in this browser ---- */
+function loadCustomPrograms(){
+  let store;
+  try{store=JSON.parse(localStorage.getItem('programplanerare.custom')||'{}')}catch(e){store={}}
+  Object.keys(store).forEach(id=>{
+    addCustomOption(id, store[id].label, store[id].html);
+  });
+}
+function addCustomOption(id,label,html){
+  if(blobUrls[id]) URL.revokeObjectURL(blobUrls[id]);
+  const url=URL.createObjectURL(new Blob([html],{type:'text/html'}));
+  blobUrls['custom:'+id]=url;
+  let opt=[...select.options].find(o=>o.value==='custom:'+id);
+  if(!opt){
+    opt=document.createElement('option');
+    opt.value='custom:'+id;
+    select.appendChild(opt);
+  }
+  opt.textContent=label+' (sparad lokalt)';
+}
+function resolveSrc(value){
+  return blobUrls[value] || value;
+}
+
 const q=new URLSearchParams(location.search).get('program');
-if(q&&[...select.options].some(o=>o.value===q)){select.value=q;view.src=q}
-select.addEventListener('change',()=>{view.src=select.value;history.replaceState(null,'','?program='+encodeURIComponent(select.value))});
+loadCustomPrograms();
+if(q&&[...select.options].some(o=>o.value===q)){select.value=q;view.src=resolveSrc(q)}
+select.addEventListener('change',()=>{
+  view.src=resolveSrc(select.value);
+  if(!select.value.startsWith('custom:')) history.replaceState(null,'','?program='+encodeURIComponent(select.value));
+});
+
+/* ---- editor ---- */
+const overlay=document.getElementById('editorOverlay');
+const blocksEl=document.getElementById('blocks');
+let blockCount=0;
+
+const TYPES=['Inramning','Inventering','Arbete','Modell','Reflektion','Dialog','Beslut','Överenskommelse','Ledarskap','Färdighet','Simulering','Avslutning','Paus','Marginal'];
+
+function addBlockRow(data){
+  data=data||{duration:15,title:'',type:'Arbete',content:'',notes:''};
+  const id='b'+(blockCount++);
+  const row=document.createElement('div');
+  row.className='blockRow';
+  row.dataset.id=id;
+  row.innerHTML=`
+    <div class="top">
+      <div><label>Min</label><input type="number" class="f-duration" min="1" value="${data.duration}"></div>
+      <div><label>Rubrik</label><input type="text" class="f-title" value="${escapeAttr(data.title)}" placeholder="Blockets rubrik"></div>
+      <div><label>Typ</label><select class="f-type">${TYPES.map(t=>`<option${t===data.type?' selected':''}>${t}</option>`).join('')}</select></div>
+      <div style="display:flex;gap:6px">
+        <button type="button" class="iconbtn moveUp" title="Flytta upp">↑</button>
+        <button type="button" class="iconbtn moveDown" title="Flytta ner">↓</button>
+        <button type="button" class="iconbtn removeBlock" title="Ta bort">✕</button>
+      </div>
+    </div>
+    <div class="texts">
+      <div><label>Innehåll</label><textarea class="f-content" placeholder="Vad händer i momentet">${escapeHtml(data.content)}</textarea></div>
+      <div><label>Egna anteckningar</label><textarea class="f-notes" placeholder="Fällor, tips, faciliteringsstöd">${escapeHtml(data.notes)}</textarea></div>
+    </div>
+    <div class="blockTime" data-timefield></div>
+  `;
+  row.querySelector('.removeBlock').addEventListener('click',()=>{row.remove();recalcTimes();});
+  row.querySelector('.moveUp').addEventListener('click',()=>{
+    const prev=row.previousElementSibling;
+    if(prev) blocksEl.insertBefore(row,prev);
+    recalcTimes();
+  });
+  row.querySelector('.moveDown').addEventListener('click',()=>{
+    const next=row.nextElementSibling;
+    if(next) blocksEl.insertBefore(next,row);
+    recalcTimes();
+  });
+  row.querySelector('.f-duration').addEventListener('input',recalcTimes);
+  blocksEl.appendChild(row);
+  recalcTimes();
+}
+
+function parseTime(t){
+  const m=/^(\d{1,2})[.:](\d{2})$/.exec((t||'').trim());
+  if(!m) return 0;
+  return parseInt(m[1],10)*60+parseInt(m[2],10);
+}
+function formatTime(mins){
+  mins=((mins%1440)+1440)%1440;
+  const h=Math.floor(mins/60),m=mins%60;
+  return String(h).padStart(2,'0')+'.'+String(m).padStart(2,'0');
+}
+function recalcTimes(){
+  let t=parseTime(document.getElementById('progStart').value);
+  [...blocksEl.children].forEach(row=>{
+    const dur=parseInt(row.querySelector('.f-duration').value,10)||0;
+    const end=t+dur;
+    row.querySelector('[data-timefield]').textContent=formatTime(t)+'–'+formatTime(end)+' · '+dur+' min';
+    t=end;
+  });
+}
+document.getElementById('progStart').addEventListener('input',recalcTimes);
+
+function escapeHtml(s){return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+function escapeAttr(s){return escapeHtml(s).replace(/"/g,'&quot;')}
+
+function resetEditor(){
+  blocksEl.innerHTML='';
+  blockCount=0;
+  document.getElementById('progTitle').value='';
+  document.getElementById('progSubtitle').value='';
+  document.getElementById('progStart').value='09.00';
+  addBlockRow({duration:15,title:'Inrama dagen',type:'Inramning',content:'',notes:''});
+}
+
+document.getElementById('newProgramBtn').addEventListener('click',()=>{
+  resetEditor();
+  overlay.classList.add('open');
+});
+document.getElementById('cancelEditor').addEventListener('click',()=>overlay.classList.remove('open'));
+document.getElementById('addBlockBtn').addEventListener('click',()=>addBlockRow());
+
+function collectBlocks(){
+  let t=parseTime(document.getElementById('progStart').value);
+  return [...blocksEl.children].map(row=>{
+    const duration=parseInt(row.querySelector('.f-duration').value,10)||0;
+    const start=t,end=t+duration;
+    t=end;
+    return {
+      start:formatTime(start),end:formatTime(end),duration,
+      title:row.querySelector('.f-title').value.trim()||'Namnlöst block',
+      type:row.querySelector('.f-type').value,
+      content:row.querySelector('.f-content').value.trim(),
+      notes:row.querySelector('.f-notes').value.trim()
+    };
+  });
+}
+
+function buildHtml(title,subtitle,blocks){
+  const startT=blocks.length?blocks[0].start:'';
+  const endT=blocks.length?blocks[blocks.length-1].end:'';
+  const blocksHtml=blocks.map(b=>`
+<article class="block" data-type="${escapeAttr(b.type)}">
+<div class="block-head"><div class="time">${b.start}–${b.end}<span class="duration">${b.duration} min</span></div><h2>${escapeHtml(b.title)}</h2><span class="type">${escapeHtml(b.type)}</span></div>
+<div class="expanders">
+<div class="expander"><button type="button"><span>Innehåll</span><span class="chev">⌄</span></button><div class="text">${escapeHtml(b.content)}</div></div>
+<div class="expander"><button type="button"><span>Egna anteckningar</span><span class="chev">⌄</span></button><div class="text">${escapeHtml(b.notes)}</div></div>
+</div></article>`).join('\n');
+
+  return `<!doctype html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>${escapeHtml(title)}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Raleway:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#35212d;--muted:#78636e;--paper:#fffaf7;--line:#ead8d5;--panel:#fff;--accent:#b84e78;--shadow:0 10px 28px rgba(91,44,60,.09)}
+*{box-sizing:border-box} body{margin:0;color:var(--ink);font-family:Raleway,Arial,sans-serif;background:radial-gradient(circle at 85% 5%,#fbe2ec 0,transparent 27%),linear-gradient(135deg,#fffaf6,#f7ece7);min-height:100vh}
+main{max-width:1180px;margin:auto;padding:38px 24px 70px}
+header{display:grid;gap:10px;margin-bottom:28px}.eyebrow{font:700 13px Montserrat,sans-serif;letter-spacing:.13em;text-transform:uppercase;color:var(--accent)}
+h1{font:700 clamp(34px,5vw,58px)/1 Montserrat,sans-serif;letter-spacing:-.045em;margin:0}
+.subtitle{max-width:780px;color:var(--muted);font-size:18px;line-height:1.45;margin:0}
+.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}.toolbar button{border:1px solid var(--line);background:#fff;color:var(--ink);padding:10px 14px;border-radius:10px;font:700 14px Montserrat,sans-serif;cursor:pointer}.toolbar button:hover{box-shadow:0 5px 14px rgba(91,44,60,.12)}
+.timeline{display:grid;gap:14px}.block{background:var(--panel);border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow);overflow:hidden}
+.block-head{display:grid;grid-template-columns:138px 1fr auto;gap:16px;align-items:start;padding:20px 22px 16px}.time{font:700 17px Montserrat,sans-serif}.duration{display:block;color:var(--muted);font:600 13px Raleway,sans-serif;margin-top:5px}
+.block h2{font:700 23px/1.15 Montserrat,sans-serif;letter-spacing:-.03em;margin:0}.type{font:700 12px Montserrat,sans-serif;padding:7px 9px;border-radius:999px;background:#f6e8ee;color:#7b3454;white-space:nowrap}
+.expanders{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line)}
+.expander{padding:0 18px 16px}.expander+ .expander{border-left:1px solid var(--line)}.expander button{width:100%;display:flex;justify-content:space-between;align-items:center;gap:12px;background:none;border:0;padding:14px 0 8px;text-align:left;color:var(--ink);font:700 14px Montserrat,sans-serif;cursor:pointer}
+.chev{font-size:18px;transition:transform .18s ease}.expander.open .chev{transform:rotate(180deg)}
+.text{position:relative;color:#5f4a56;font-size:15px;line-height:1.5;white-space:pre-line;max-height:3.2em;overflow:hidden}.text:after{content:"";position:absolute;inset:auto 0 0 0;height:1.2em;background:linear-gradient(transparent,#fff)}.expander.open .text{max-height:none}.expander.open .text:after{display:none}
+.block[data-type="Paus"]{background:#f7f2ef}.block[data-type="Paus"] .type{background:#ece4df;color:#66534a}
+.block[data-type="Färdighet"] .type{background:#e9f3ef;color:#276454}.block[data-type="Simulering"] .type{background:#ece9f8;color:#56408c}.block[data-type="Överenskommelse"] .type{background:#fff0d8;color:#85590f}
+@media(max-width:760px){main{padding:26px 14px 50px}.block-head{grid-template-columns:1fr auto}.time{grid-column:1/-1}.expanders{grid-template-columns:1fr}.expander+ .expander{border-left:0;border-top:1px solid var(--line)}}
+@media print{body{background:#fff}.toolbar{display:none}.block{box-shadow:none;break-inside:avoid}.expander{display:block}.text{max-height:none}.text:after{display:none}}
+</style>
+</head>
+<body>
+<main>
+<header>
+<div class="eyebrow">Programplanerare · ${startT}–${endT}</div>
+<h1>${escapeHtml(title)}</h1>
+<p class="subtitle">${escapeHtml(subtitle)}</p>
+<div class="toolbar"><button id="openAll">Öppna alla textrutor</button><button id="closeAll">Stäng alla</button></div>
+</header>
+
+<section class="timeline">
+${blocksHtml}
+</section>
+</main>
+<script>
+document.querySelectorAll('.expander button').forEach(btn=>{
+  btn.addEventListener('click',()=>btn.parentElement.classList.toggle('open'));
+});
+document.getElementById('openAll').addEventListener('click',()=>document.querySelectorAll('.expander').forEach(x=>x.classList.add('open')));
+document.getElementById('closeAll').addEventListener('click',()=>document.querySelectorAll('.expander').forEach(x=>x.classList.remove('open')));
+<\/script>
+</body></html>`;
+}
+
+function slug(s){
+  return (s||'program').toLowerCase()
+    .replace(/[åä]/g,'a').replace(/ö/g,'o')
+    .replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'')||'program';
+}
+
+document.getElementById('downloadBtn').addEventListener('click',()=>{
+  const title=document.getElementById('progTitle').value.trim()||'Nytt program';
+  const subtitle=document.getElementById('progSubtitle').value.trim();
+  const html=buildHtml(title,subtitle,collectBlocks());
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(new Blob([html],{type:'text/html'}));
+  a.download=slug(title)+'.html';
+  a.click();
+});
+
+document.getElementById('saveBtn').addEventListener('click',()=>{
+  const title=document.getElementById('progTitle').value.trim()||'Nytt program';
+  const subtitle=document.getElementById('progSubtitle').value.trim();
+  const html=buildHtml(title,subtitle,collectBlocks());
+  const id=Date.now().toString(36);
+  let store;
+  try{store=JSON.parse(localStorage.getItem('programplanerare.custom')||'{}')}catch(e){store={}}
+  store[id]={label:title,html};
+  localStorage.setItem('programplanerare.custom',JSON.stringify(store));
+  addCustomOption(id,title,html);
+  select.value='custom:'+id;
+  view.src=resolveSrc('custom:'+id);
+  overlay.classList.remove('open');
+});
 </script>
 </body></html>
