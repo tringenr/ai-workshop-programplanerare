@@ -24,6 +24,12 @@ h1{font:700 clamp(34px,5vw,58px)/1 Montserrat,sans-serif;letter-spacing:-.045em;
 .text{position:relative;color:#5f4a56;font-size:15px;line-height:1.5;white-space:pre-line;max-height:3.2em;overflow:hidden}.text:after{content:"";position:absolute;inset:auto 0 0 0;height:1.2em;background:linear-gradient(transparent,#fff)}.expander.open .text{max-height:none}.expander.open .text:after{display:none}
 .block[data-type="Paus"]{background:#f7f2ef}.block[data-type="Paus"] .type{background:#ece4df;color:#66534a}
 .block[data-type="Färdighet"] .type{background:#e9f3ef;color:#276454}.block[data-type="Simulering"] .type{background:#ece9f8;color:#56408c}.block[data-type="Överenskommelse"] .type{background:#fff0d8;color:#85590f}
+.block[data-type="Bakgrund"]{background:#fbf5ef}.block[data-type="Bakgrund"] .type{background:#eee2cf;color:#6b5323}
+.block[data-type="Incheckning"] .type{background:#e8eef7;color:#2f5586}
+table.fallor{width:100%;border-collapse:collapse;font-size:14px}
+table.fallor th,table.fallor td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+table.fallor th{font:700 12px Montserrat,sans-serif;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+ul.plain{margin:0;padding-left:18px}ul.plain li{margin-bottom:6px}
 @media(max-width:760px){main{padding:26px 14px 50px}.block-head{grid-template-columns:1fr auto}.time{grid-column:1/-1}.expanders{grid-template-columns:1fr}.expander+ .expander{border-left:0;border-top:1px solid var(--line)}}
 @media print{body{background:#fff}.toolbar{display:none}.block{box-shadow:none;break-inside:avoid}.expander{display:block}.text{max-height:none}.text:after{display:none}}
 </style>
@@ -33,59 +39,102 @@ h1{font:700 clamp(34px,5vw,58px)/1 Montserrat,sans-serif;letter-spacing:-.045em;
 <header>
 <div class="eyebrow">Programplanerare · 09.00–12.00</div>
 <h1>4 nov rollworkshop RFSU</h1>
-<p class="subtitle">Rollklargörande-pass för RFSU Göteborgs personalgrupp, styrelse och förbunds-HR under det tillfälliga provisoriet där en medarbetare och styrelsen delar på chefsuppgifter. Fokus: roller/mandat och vägar att lyfta frågor. Historiken (diskriminering, Månstråles mejl, årsmötet) är medvetet avgränsad bort.</p>
+<p class="subtitle">Facilitatöragenda för RFSU Göteborgs personalgrupp, styrelse och förbunds-HR under det tillfälliga provisoriet. Syfte: tydliggöra roller/mandat och vägar att lyfta frågor (forum, eskalering) — grunden som ska bära även när en permanent chef kommer på plats. Historiken (diskriminering, Månstråles mejl, årsmötet) är medvetet avgränsad bort från denna dag.</p>
 <div class="toolbar"><button id="openAll">Öppna alla textrutor</button><button id="closeAll">Stäng alla</button></div>
 </header>
 
 <section class="timeline">
 
+<article class="block" data-type="Bakgrund">
+<div class="block-head"><div class="time">Bakgrund</div><h2>Syfte, deltagare &amp; fällor</h2><span class="type">Bakgrund</span></div>
+<div class="expanders">
+<div class="expander"><button type="button"><span>Syfte, avgränsning &amp; deltagare</span><span class="chev">⌄</span></button><div class="text">Syftet är att tydliggöra roller och mandat i det tillfälliga ledningsprovisoriet (en medarbetare och styrelsen delar på chefsuppgifter sedan VC slutat), klargöra vilka forum som finns för olika typer av frågor, och börja reda ut hur man eskalerar när relationen till chef/organisation inte fungerar — särskilt medarbetare–chef och medarbetare–medarbetare. Rubrikerna är satta i förväg tillsammans med ordförande. Historiken är medvetet avgränsad bort — inte för att den är oviktig, utan för att dagens fokus är den strukturella grund som ska bära även när en permanent chef kommer på plats. Arbetet är bottom-up: ni inventerar själva vad som fungerar och skaver innan ni klustrar fram var det behövs klargörande, beslut eller förhandling.
+
+10 personer totalt, inklusive facilitator. Känt: medarbetargruppen (inkl. den som delar chefsuppgifter — deltar som medarbetare, inte i chefsroll), en nyanställd visstidsprojektledare, styrelsen inkl. ordförande, samt HR/förbundskansliet. Öppet: exakt fördelning medarbetare/styrelse/HR och vilka specifikt. Par- och trio-indelning ska sättas medvetet av facilitatorn utifrån kända relationer — lämnas inte åt slumpen.</div></div>
+<div class="expander"><button type="button"><span>Fällor att hålla koll på</span><span class="chev">⌄</span></button><div class="text"><table class="fallor">
+<tr><th>Fälla</th><th>Hur du möter den</th></tr>
+<tr><td>Dubbla roller hos den som delar chefsuppgifter</td><td>Håll rollen synlig utan att göra personen till talesperson för chefssidan</td></tr>
+<tr><td>Aktiv relationell friktion, inte bara historisk</td><td>Ramsätt med Galtungs logik; fånga och parkera om samtal glider från sakfråga till relation</td></tr>
+<tr><td>Sakfrågor som bär relationell laddning (t.ex. "vem gör vad")</td><td>Låt det komma upp men parkera det som blir för hett för rummet</td></tr>
+<tr><td>Ordförandens antagande att forum redan fungerar</td><td>Testa påståendet i rummet — tyst skattning innan högt samtal</td></tr>
+<tr><td>Fri eller slumpmässig ihopparning</td><td>Facilitatorstyrd, medvetet vald parindelning</td></tr>
+<tr><td>Historiken smyger sig in, särskilt årsmötet</td><td>Notera och parkera tydligt — "det hör till det andra spåret"</td></tr>
+<tr><td>Två nya modeller samma dag (RACI, beslutstrappa)</td><td>Max 2–3 min muntlig input per modell, svensk vardagsterminologi</td></tr>
+<tr><td>Väggmaterialet försvinner mellan passen</td><td>Boka ett rum där lapparna kan sitta uppe hela dagen</td></tr>
+<tr><td>Dagen ger intrycket av att vara hela lösningen</td><td>Avsluta med en mening om att ett annat spår för relationerna finns eller kommer</td></tr>
+</table></div></div>
+</div></article>
+
+<article class="block" data-type="Incheckning">
+<div class="block-head"><div class="time">09.00–09.10<span class="duration">10 min</span></div><h2>Incheckning</h2><span class="type">Incheckning</span></div>
+<div class="expanders">
+<div class="expander"><button type="button"><span>Innehåll</span><span class="chev">⌄</span></button><div class="text">Tyst och individuell — inget delas i grupp.
+
+Fråga 1 (tyst, siffra med fingrar 1–3 eller på lapp): "Hur mycket utrymme har du idag för att lyssna, tänka efter och bli utmanad – låg, mellan eller hög?"
+
+Fråga 2 (tyst, egen lapp, inget krav på att dela): "Utifrån det du märker hos dig själv – finns det något du vill tänka på eller göra för att hjälpa dig själv att vara konstruktiv i mötet?"</div></div>
+<div class="expander"><button type="button"><span>Egna anteckningar</span><span class="chev">⌄</span></button><div class="text">Förklaring att ge muntligt till fråga 1: "Man kan t.ex. märka att man själv är lite taggig, lättirriterad eller snabb att reagera. Men man kan också vara spänd eller vaksam för att man är orolig för att det ska bli dålig stämning eller konflikt."
+
+Håll fråga 2 öppen även för svar som "inget, jag tar det som det kommer" — normalisera små svar, inte bara produktiva strategier.
+
+Bestäm för dig själv (inte högt) vad du gör om någon signalerar lågt utrymme — lägre krav i parövningar, tillåtelse att vara mer lyssnande, möjlighet att gå ut en stund.</div></div>
+</div></article>
+
 <article class="block" data-type="Inramning">
-<div class="block-head"><div class="time">09.00–09.15<span class="duration">15 min</span></div><h2>Inrama dagen</h2><span class="type">Inramning</span></div>
+<div class="block-head"><div class="time">09.10–09.20<span class="duration">10 min</span></div><h2>Ramsättning</h2><span class="type">Inramning</span></div>
 <div class="expanders">
-<div class="expander"><button type="button"><span>Innehåll</span><span class="chev">⌄</span></button><div class="text">Syftet med passet: tydliggöra roller/mandat i det tillfälliga provisoriet samt vägar att lyfta frågor (forum och eskalering). Säg tydligt vad dagen INTE handlar om — det är avgränsat mot äldre historik. Kort presentation av vilka som är i rummet och varför.</div></div>
-<div class="expander"><button type="button"><span>Egna anteckningar</span><span class="chev">⌄</span></button><div class="text">Historik (diskriminering, Månstråles mejl, årsmötet) är medvetet utanför scope för det här passet. Om det ändå kommer upp: notera det kort och parkera ("det hör till det andra spåret") snarare än att låta det dra in hela historiken. Medarbetaren som delar chefsuppgifter deltar i rummet som en medarbetare bland de andra — håll den dubbelheten synlig (vem lyssnar man på i rummet kontra på kansliet på måndag?) utan att göra personen till talesperson för "chefssidan".</div></div>
+<div class="expander"><button type="button"><span>Innehåll</span><span class="chev">⌄</span></button><div class="text">Muntlig, facilitatorledd, kort. Säg i princip rakt av: "Vi vet att det finns spänningar i gruppen just nu. Mycket av det handlar om vem som gör vad, otydliga gränser, vem som har mandat – alltså strukturen. Den är dessutom tillfällig just nu, och det vi kommer fram till idag blir grunden för hur det ska se ut när ni har en permanent chef på plats igen. Därför jobbar vi med just det idag. Det betyder inte att vi låtsas att allt annat inte finns – men det hanteras i andra samtal, inte här."</div></div>
+<div class="expander"><button type="button"><span>Egna anteckningar</span><span class="chev">⌄</span></button><div class="text">Bakgrundslogik (din egen, inte för gruppen): Galtungs konflikttriangel — kontradiktionen (otydliga roller/mandat/forum) driver mycket av attityd (misstro, känslan av att stå utanför) och beteende (att inte bjuda in alla, dra sig för att lyfta saker). Ni adresserar C idag för att den går att påverka tryggt i det här formatet, utan att behöva bearbeta A och B i ett stort blandat rum.</div></div>
 </div></article>
 
 <article class="block" data-type="Inventering">
-<div class="block-head"><div class="time">09.15–10.00<span class="duration">45 min</span></div><h2>Tema 1: Roller &amp; mandat</h2><span class="type">Inventering</span></div>
+<div class="block-head"><div class="time">09.20–10.05<span class="duration">45 min</span></div><h2>Pass 1: Roller &amp; mandat</h2><span class="type">Inventering</span></div>
 <div class="expanders">
-<div class="expander"><button type="button"><span>Innehåll</span><span class="chev">⌄</span></button><div class="text">Bottom-up-inventering: vad fungerar bra/skavigt i vem som gör vad i provisoriet? Modell: ensam → par (blandade par, m.a. och styrelse/HR) → skriv ner → klustra skriftligt på vägg. I paren intervjuar man varandra och antecknar; var och en redovisar sedan kort och koncist den ANDRES tankar (inte sina egna) — spara anteckningarna. Klustra lapparna på väggen i kategorierna: klargörande behövs / beslut behövs / förhandling behövs. Sortera därefter de kluster som pekar på otydligt mandat enligt en förenklad RACI-modell, på vanlig svenska: Gör jobbet / Beslutar / Rådfrågas / Informeras.</div></div>
-<div class="expander"><button type="button"><span>Egna anteckningar</span><span class="chev">⌄</span></button><div class="text">Ramsätt tydligt muntligt innan start: "ni letar brister i system och struktur, inte hos personer." Blandade par (m.a. + styrelse/HR) kan fungera närmande snarare än hämmande — redovisningsformatet tvingar till lyssnande ("X sa att...") och skyddar genom att det inte är den egna åsikten som läggs fram. Håll RACI-inputen till max 2–3 min muntligt/en bild — döp om bokstäverna till vanlig svenska så det inte känns som ännu ett konsultverktyg uppifrån. Väggmaterialet måste vara fysiskt kvar hela dagen (behövs igen i Tema 3) — boka ett rum som inte behöver städas mellan passen.</div></div>
-</div></article>
+<div class="expander"><button type="button"><span>Innehåll</span><span class="chev">⌄</span></button><div class="text">Mål: inventera bottom-up vad som fungerar och skaver kring "vem gör vad", klustra fram var klargörande/beslut/förhandling behövs, sortera i RACI.
 
-<article class="block" data-type="Inventering">
-<div class="block-head"><div class="time">10.00–10.35<span class="duration">35 min</span></div><h2>Tema 2: Forum</h2><span class="type">Inventering</span></div>
-<div class="expanders">
-<div class="expander"><button type="button"><span>Innehåll</span><span class="chev">⌄</span></button><div class="text">Samma modell som Tema 1 (ensam → par → skriv → klustra på vägg), nu tillämpad på forum: vilka forum fungerar väl och lyfter frågor i alla riktningar? Vilka frågor saknar helt ett forum? Vilka forum fungerar mindre bra för sina frågor? Lägg in en tyst, individuell skattning innan ni pratar högt. Sortera sedan de identifierade forumen längs beslutstrappan: är forumet rådgivande, informerande eller faktiskt beslutande?</div></div>
-<div class="expander"><button type="button"><span>Egna anteckningar</span><span class="chev">⌄</span></button><div class="text">Styrelseordförandens antagande att forum/eskalering redan fungerar ska TESTAS i rummet, inte tas för givet — annars bygger ni vidare på en struktur som kanske bara finns på pappret. Den tysta skattningen innan högt samtal gör att det inte blir styrelsen som definierar verkligheten. Beslutstrappan brukar avslöja en vanlig diskrepans: folk tror ett forum är beslutande, men det är egentligen bara informerande — precis den typen av dold otydlighet ni vill fånga.</div></div>
+1) Ensam (5 min): skriv tyst vad som fungerar bra och vad som skaver i uppgifts-/ansvarsfördelningen.
+2) Par (10 min): facilitatorstyrda, medvetet blandade par (styrelse/medarbetare/HR) intervjuar varandra och antecknar åt varandra.
+3) Skriv &amp; klustra på vägg (15 min): en poäng per lapp, gemensam tyst/halvtyst klustring med kort rubrik per kluster.
+4) RACI-sortering (15 min): sortera kluster om otydligt mandat i vardagssvenska — Gör jobbet / Beslutar / Rådfrågas / Informeras.</div></div>
+<div class="expander"><button type="button"><span>Egna anteckningar</span><span class="chev">⌄</span></button><div class="text">Ramsätt muntligt innan start: "Ni letar brister i system och struktur, inte hos personer." Undvik att gå laget runt muntligt — låt väggen göra jobbet. Lämna väggmaterialet uppe, det används igen i pass 2.</div></div>
 </div></article>
 
 <article class="block" data-type="Paus">
-<div class="block-head"><div class="time">10.35–10.45<span class="duration">10 min</span></div><h2>Paus</h2><span class="type">Paus</span></div>
+<div class="block-head"><div class="time">10.05–10.15<span class="duration">10 min</span></div><h2>Paus</h2><span class="type">Paus</span></div>
 <div class="expanders">
-<div class="expander"><button type="button"><span>Innehåll</span><span class="chev">⌄</span></button><div class="text">Kort paus. Låt väggmaterialet från Tema 1–2 hänga kvar — det används igen direkt efter pausen.</div></div>
-<div class="expander"><button type="button"><span>Egna anteckningar</span><span class="chev">⌄</span></button><div class="text">—</div></div>
+<div class="expander"><button type="button"><span>Innehåll</span><span class="chev">⌄</span></button><div class="text">Kort paus.</div></div>
+<div class="expander"><button type="button"><span>Egna anteckningar</span><span class="chev">⌄</span></button><div class="text">Låt väggmaterialet från pass 1 hänga kvar — det används igen direkt i pass 2.</div></div>
 </div></article>
 
-<article class="block" data-type="Dialog">
-<div class="block-head"><div class="time">10.45–11.25<span class="duration">40 min</span></div><h2>Tema 3: Eskalering</h2><span class="type">Dialog</span></div>
+<article class="block" data-type="Inventering">
+<div class="block-head"><div class="time">10.15–11.15<span class="duration">60 min</span></div><h2>Pass 2: Forum &amp; eskalering</h2><span class="type">Inventering</span></div>
 <div class="expanders">
-<div class="expander"><button type="button"><span>Innehåll</span><span class="chev">⌄</span></button><div class="text">Kärnfråga: hur kan medarbetare lyfta frågor till organisationen om relationen till chefsfunktionen inte fungerar — vilka kanaler finns, hur ser organiseringen ut, vad skulle behövas? Kort teoriinput (max 2–3 min per modell): hur eskalering kan organiseras i en ideell förening, plus en snabb repetition av RACI och beslutstrappan. Därefter tvärgruppstrios med blandad representation (styrelse + medarbetare): applicera RACI/beslutstrappan konkret på de kluster från Tema 1–2 som redan sitter på väggen — inte en lösning i luften. Ge grupperna enkla urvalsmodeller att välja mellan. Kort redovisning av vad varje trio landat i och varför.</div></div>
-<div class="expander"><button type="button"><span>Egna anteckningar</span><span class="chev">⌄</span></button><div class="text">Håll historiken (särskilt årsmötet) som tyst bakgrund, inte referens — frågan är redan motiverad utan att namnge händelsen. Om någon ändå för in den: notera och parkera ("det hör till det andra spåret"). Målet är INTE att designa och besluta ett helt system idag, utan att kartlägga vad som finns, namnge var det brister/är otydligt och formulera vad som behövs. Säg högt att frågan är påbörjad, inte avslutad, och att det finns ett naturligt nästa tillfälle att landa den i.</div></div>
+<div class="expander"><button type="button"><span>Innehåll</span><span class="chev">⌄</span></button><div class="text">Mål: kartlägga vilka forum som faktiskt fungerar och för vilka frågor, var forum saknas, och hur eskalering kan organiseras — särskilt hur en medarbetare kan lyfta till organisationen om relationen till chefen inte fungerar.
+
+1) Ensam (5 min): tyst — vilka forum fungerar väl och lyfter frågor i alla riktningar? Vilka frågor saknar forum helt? Vilka forum fungerar mindre bra?
+2) Par (10 min): samma modell och blandade par-princip som pass 1.
+3) Skriv &amp; klustra på vägg (10 min): lappar upp, tyst/halvtyst klustring — går snabbare, gruppen känner formatet.
+4) Beslutstrappan på klustren (5 min): är forumet rådgivande, informerande eller faktiskt beslutande?
+5) Teoriinput (10 min): kort presentation om hur en ideell organisation kan organisera eskalering, med enkla urvalsmodeller (RACI + beslutstrappan).
+6) Tvärgruppstrios (15 min): grupper om 3 (styrelse + medarbetare, HR flytande) applicerar RACI/beslutstrappan konkret på klustren från pass 1–2 på väggen — vilken lösning gillar ni och varför?
+7) Kort redovisning (5 min): en highlight per trio.</div></div>
+<div class="expander"><button type="button"><span>Egna anteckningar</span><span class="chev">⌄</span></button><div class="text">Ordförandens antagande att forum redan fungerar testas här konkret mot gruppens egen bild i beslutstrappe-steget — var uppmärksam på diskrepans. Ambitionen är att namnge vad som finns, brister och behövs — inte att designa och besluta ett helt eskaleringssystem idag. Säg det högt om tiden inte räcker.</div></div>
 </div></article>
 
 <article class="block" data-type="Överenskommelse">
-<div class="block-head"><div class="time">11.25–11.50<span class="duration">25 min</span></div><h2>Sammanfattning &amp; överenskommelser</h2><span class="type">Överenskommelse</span></div>
+<div class="block-head"><div class="time">11.15–11.45<span class="duration">30 min</span></div><h2>Avslutning</h2><span class="type">Överenskommelse</span></div>
 <div class="expanders">
-<div class="expander"><button type="button"><span>Innehåll</span><span class="chev">⌄</span></button><div class="text">Gå igenom vad klustren på väggen visar sammantaget. Formulera konkreta överenskommelser för det ni har mandat att besluta i rummet. Fastställ vem som gör vad till när. Notera separat vilka frågor som behöver förankras hos förbundet om HR på plats inte kan göra det live i workshopen. Bekräfta nästa uppföljningstillfälle för det som inte hinner landas idag.</div></div>
-<div class="expander"><button type="button"><span>Egna anteckningar</span><span class="chev">⌄</span></button><div class="text">Avsluta inte utan konkreta nästa steg — annars rinner det ut i sanden som tidigare möten gjort. Var tydlig med skillnaden mellan det som beslutas direkt i rummet och det som är förslag som ska godkännas i efterhand av styrelsen.</div></div>
+<div class="expander"><button type="button"><span>Innehåll</span><span class="chev">⌄</span></button><div class="text">Sammanfatta vad väggens kluster visar i stora linjer. Namnge konkreta överenskommelser som kan stå direkt (HR kan ev. förankra förbundsgränser live; annat kan behöva anchoring i efterhand). Fastställ vem gör vad till när, med ägare och datum. Avsluta explicit med en mening om att relationsspåret finns eller kommer (individuella samtal, uppföljning om ca 3 månader). Tacka för bottom-up-arbetet specifikt — det är gruppens eget material som burit dagen.</div></div>
+<div class="expander"><button type="button"><span>Egna anteckningar</span><span class="chev">⌄</span></button><div class="text">Viktigt att gruppen inte går därifrån och tror att dagens strukturfokus var hela svaret — relationsfrågorna (aktiv friktion, inte bara historik) kvarstår och hanteras i annat spår.</div></div>
 </div></article>
 
 <article class="block" data-type="Marginal">
-<div class="block-head"><div class="time">11.50–12.00<span class="duration">10 min</span></div><h2>Marginal</h2><span class="type">Marginal</span></div>
+<div class="block-head"><div class="time">11.45–12.00<span class="duration">15 min</span></div><h2>Marginal</h2><span class="type">Marginal</span></div>
 <div class="expanders">
 <div class="expander"><button type="button"><span>Innehåll</span><span class="chev">⌄</span></button><div class="text">Buffert om något moment dragit över.</div></div>
-<div class="expander"><button type="button"><span>Egna anteckningar</span><span class="chev">⌄</span></button><div class="text">Om tiden blir knapp: skär hellre i sammanfattningen/marginalen än i själva inventeringsmomenten (Tema 1–2) — det är där underlaget skapas som Tema 3 bygger vidare på.</div></div>
+<div class="expander"><button type="button"><span>Egna anteckningar</span><span class="chev">⌄</span></button><div class="text">Given den aktiva gruppfriktionen (inte bara historisk) är marginalen medvetet större denna gång — det här är inte en dag att pressa i mål på minuten.
+
+Öppna frågor kvar att bestämma innan 4 nov: exakt deltagarfördelning (antal medarbetare/styrelse/HR) och vilka specifikt; om individuella m.a.-samtal hunnit hållas eller fortfarande är obearbetade; vem äger rummet praktiskt (så lapparna kan sitta kvar hela dagen).</div></div>
 </div></article>
 
 </section>
