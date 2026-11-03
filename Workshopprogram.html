@@ -103,7 +103,7 @@ function addCustomOption(id,label,html){
   opt.textContent=label+' (sparad lokalt)';
 }
 function resolveSrc(value){
-  return blobUrls[value] || value;
+  return blobUrls[value] || value + '?v=2026-11-03-1';
 }
 
 const q=new URLSearchParams(location.search).get('program');
