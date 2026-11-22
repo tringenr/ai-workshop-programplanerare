@@ -22,7 +22,7 @@ h1{font:700 clamp(34px,5vw,58px)/1 Montserrat,sans-serif;letter-spacing:-.045em;
 .expander{padding:0 18px 16px}.expander+ .expander{border-left:1px solid var(--line)}.expander button{width:100%;display:flex;justify-content:space-between;align-items:center;gap:12px;background:none;border:0;padding:14px 0 8px;text-align:left;color:var(--ink);font:700 14px Montserrat,sans-serif;cursor:pointer}
 .chev{font-size:18px;transition:transform .18s ease}.expander.open .chev{transform:rotate(180deg)}
 .text{position:relative;color:#5f4a56;font-size:15px;line-height:1.5;white-space:pre-line;max-height:3.2em;overflow:hidden}.text:after{content:"";position:absolute;inset:auto 0 0 0;height:1.2em;background:linear-gradient(transparent,#fff)}.expander.open .text{max-height:none}.expander.open .text:after{display:none}
-.block[data-type="Paus"]{background:#f7f2ef}.block[data-type="Paus"] .type{background:#ece4df;color:#66534a}
+.block[data-type="Bakgrund"]{background:#fbf5ef}.block[data-type="Bakgrund"] .type{background:#eee2cf;color:#6b5323}.block[data-type="Paus"]{background:#f7f2ef}.block[data-type="Paus"] .type{background:#ece4df;color:#66534a}
 .block[data-type="Färdighet"] .type{background:#e9f3ef;color:#276454}.block[data-type="Simulering"] .type{background:#ece9f8;color:#56408c}.block[data-type="Överenskommelse"] .type{background:#fff0d8;color:#85590f}
 @media(max-width:760px){main{padding:26px 14px 50px}.block-head{grid-template-columns:1fr auto}.time{grid-column:1/-1}.expanders{grid-template-columns:1fr}.expander+ .expander{border-left:0;border-top:1px solid var(--line)}}
 @media print{body{background:#fff}.toolbar{display:none}.block{box-shadow:none;break-inside:avoid}.expander{display:block}.text{max-height:none}.text:after{display:none}}
@@ -33,104 +33,149 @@ h1{font:700 clamp(34px,5vw,58px)/1 Montserrat,sans-serif;letter-spacing:-.045em;
 <header>
 <div class="eyebrow">Programplanerare · 13.00–16.00</div>
 <h1>26 nov ws2 VFU-samordnare</h1>
-<p class="subtitle">Workshop 2 av 3, spår 3: arbetssätt, struktur och olikhet, med beslut och mandat. Vi utgår från de mål gruppen redan har och arbetar med två centrala arbetssätt.</p>
-<div class="toolbar"><button id="openAll">Öppna alla textrutor</button><button id="closeAll">Stäng alla</button></div>
+<p class="subtitle">Workshop 2 av 3. Gruppens skiss från ws1 visar att arbetssätten och mandatet gör arbetet svårt, och att de också gör det svårare för tryggheten i gruppen att öka. I dag arbetar vi med två centrala arbetssätt och med vem som bestämmer vad i dem. På ws3 är chefen med.</p>
+<div class="toolbar"><button id="openAll">Öppna alla textrutor</button><button id="closeAll">Stäng alla</button><button id="printPdf">Skriv ut som PDF</button></div>
 </header>
 
 <section class="timeline">
 
-<article class="block" data-type="Inramning">
-<div class="block-head"><div class="time">13.00–13.15<span class="duration">15 min</span></div><h2>Välkommen tillbaka och ramar</h2><span class="type">Inramning</span></div>
+<article class="block" data-type="Bakgrund">
+<div class="block-head"><div class="time">Före start<span class="duration">läs först</span></div><h2>Syfte och output för workshop 2</h2><span class="type">Bakgrund</span></div>
 <div class="expanders">
-<div class="expander"><button type="button"><span>Innehåll</span><span class="chev">⌄</span></button><div class="text">Syftet med dagen: att för två centrala arbetssätt bli tydligare med vilka beslut vi själva äger och på vilken nivå, vad som är gemensamt och vad som är vars och ens eget, och att gå härifrån med åtaganden att pröva till ws3.
-Påminn om spelreglerna från ws1 (lyssna, avbryt inte, mobiler och datorer av, delta, var koncis, dela talutrymmet).
-Säg vad som går vidare till uppdragsgivaren: bara det vi själva lägger på listan i slutet, på gruppnivå, utan namn.</div></div>
-<div class="expander"><button type="button"><span>Egna anteckningar</span><span class="chev">⌄</span></button><div class="text">Rama in att vi arbetar med något som har vuxit fram, inte med något någon har gjort fel. Arbetssätten har funnits av goda skäl.
-Dela gärna ut ett blad med dagens output så att alla ser vart vi ska.</div></div>
+<div class="expander"><button type="button"><span>Innehåll</span><span class="chev">⌄</span></button><div class="text">Syfte: Utifrån gruppens egen skiss från ws1 arbeta med två av arbetssätten och med mandatet i dem, eftersom det är där arbetet blir svårt och där tryggheten har svårast att växa.
+
+Output när vi går hem kl 16:
+1. Två beslutskort. För två arbetssätt: var vi väntar på varandra, var vi gör olika och vem som beslutar vad.
+2. En lista över vad som är gemensamt och vad som är vars och ens eget i samma två arbetssätt.
+3. En ny spelregel om hur vi säger till.
+4. Två till tre åtaganden att pröva fram till ws3.
+5. Ett ark med frågor och kommentarer att ta upp på ws3, när chefen är med.</div></div>
+<div class="expander"><button type="button"><span>Egna anteckningar</span><span class="chev">⌄</span></button><div class="text">Spår 3 i offerten (arbetssätt, struktur och olikhet), med mandat och ansvar som tydligt inslag.
+Vi utgår från de mål gruppen redan har. Vi skapar inga nya mål.
+Sidan är publik: inga enkätsiffror eller fritexter här.</div></div>
 </div></article>
 
 <article class="block" data-type="Reflektion">
-<div class="block-head"><div class="time">13.15–13.35<span class="duration">20 min</span></div><h2>Det vi såg sist, och sedan dess</h2><span class="type">Reflektion</span></div>
+<div class="block-head"><div class="time">13.00–13.20<span class="duration">20 min</span></div><h2>Backspegel: från er skiss till dagens fokus</h2><span class="type">Reflektion</span></div>
 <div class="expanders">
-<div class="expander"><button type="button"><span>Innehåll</span><span class="chev">⌄</span></button><div class="text">Visa tavlan från ws1: tydlig kärna och en viss gråzon, beroendena (alla, många, några) och det inringade: fatta, kommunicera och följa beslut.
-I par (8 min): Vad har du lagt märke till sedan sist, kring hur vi beslutar och när vi gör olika? Vad har du förstått i efterhand?
-Helgrupp (10 min): ett par iakttagelser från varje par.</div></div>
-<div class="expander"><button type="button"><span>Egna anteckningar</span><span class="chev">⌄</span></button><div class="text">Det här är I-rundan som inte hanns med på ws1, nu som uppföljning av den senaste månaden.
-Om frågan om hur arbetssättet växte fram kommer upp: välkomna den, men håll den kort och konkret. Följdfråga: vad av det vi fick då behöver vi fortfarande?</div></div>
+<div class="expander"><button type="button"><span>Innehåll</span><span class="chev">⌄</span></button><div class="text">Output: En gemensam bild av vad som hänt sedan ws1, och att gruppen känner igen dagens fokus.
+
+Visa tavlan från ws1 och peka på tre saker:
+• Kärnan i uppdraget är tydlig, men det finns en gråzon.
+• Strukturerna gör er beroende av varandra.
+• Det enda ni ringade in var: fatta, kommunicera och följa beslut.
+Slutsatsen att pröva med gruppen: det är arbetssätten och mandatet som gör det svårt, och det gör det också svårare att känna sig trygg i gruppen.
+
+I par (8 min): Vad har du lagt märke till sedan sist, kring hur vi beslutar och när vi gör olika?
+Helgrupp (7 min): Ett par iakttagelser per par. Stämmer bilden?</div></div>
+<div class="expander"><button type="button"><span>Egna anteckningar</span><span class="chev">⌄</span></button><div class="text">Det här ersätter I-rundan som inte hanns med på ws1.
+Rama in: vi undersöker något som har vuxit fram, inte något som någon har gjort fel.
+Om historien kommer upp ('hur kom det sig att vi började jobba så här?'): välkomna den men håll den kort och konkret. Följdfråga: vad av det behöver vi fortfarande?</div></div>
+</div></article>
+
+<article class="block" data-type="Inramning">
+<div class="block-head"><div class="time">13.20–13.30<span class="duration">10 min</span></div><h2>Dagens output och spelregler</h2><span class="type">Inramning</span></div>
+<div class="expanders">
+<div class="expander"><button type="button"><span>Innehåll</span><span class="chev">⌄</span></button><div class="text">Output: Alla vet vad vi ska ha med oss kl 16 och vad som tas vidare till ws3.
+
+• Gå igenom de fem outputen (visa på blädderblock).
+• Påminn om spelreglerna från ws1: lyssna, avbryt inte, mobiler och datorer av, delta, var koncis, dela talutrymmet.
+• Säg att chefen är med på ws3. Under dagen samlar vi frågor och kommentarer till det tillfället, på gruppnivå och utan namn.</div></div>
+<div class="expander"><button type="button"><span>Egna anteckningar</span><span class="chev">⌄</span></button><div class="text">Sätt upp ett ark 'Till ws3' på väggen redan nu. Då kan frågor läggas där under hela dagen, och kritik mot ledningen får en plats utan att ta över passet.</div></div>
 </div></article>
 
 <article class="block" data-type="Modell">
-<div class="block-head"><div class="time">13.35–13.45<span class="duration">10 min</span></div><h2>Inspel: struktur, beroenden och beslut</h2><span class="type">Modell</span></div>
+<div class="block-head"><div class="time">13.30–13.40<span class="duration">10 min</span></div><h2>Inspel: tre verktyg för dagen</h2><span class="type">Modell</span></div>
 <div class="expanders">
-<div class="expander"><button type="button"><span>Innehåll</span><span class="chev">⌄</span></button><div class="text">Olika behov av struktur är legitima. Struktur är ibland ett stöd och ibland ett hinder.
-Tre sorters beroende: vi delar resurser, vi lämnar över i en kedja, eller vi måste samordna hela tiden. Vilket kräver uppgiften, och vilket har bara uppstått?
-Beslutstrappan: jag bestämmer själv, jag bestämmer och informerar, vi stämmer av först, gruppen bestämmer, chefen bestämmer.
-Tillfrågas eller informeras: behöver jag vara med och tycka, eller räcker det att jag får veta?</div></div>
-<div class="expander"><button type="button"><span>Egna anteckningar</span><span class="chev">⌄</span></button><div class="text">Max 10 minuter. Thompsons beroendetyper och polaritetstänkande (Barry Johnson) i bakgrunden.
-Kan kopplas kort till SCARF som gruppen känner igen: otydliga beslut påverkar visshet och autonomi.</div></div>
+<div class="expander"><button type="button"><span>Innehåll</span><span class="chev">⌄</span></button><div class="text">Output: Ett gemensamt språk för resten av dagen.
+
+1. Beslutstrappan, fem steg: jag bestämmer själv / jag bestämmer och informerar / vi stämmer av först / gruppen bestämmer / chefen bestämmer.
+2. Tillfrågas eller informeras: behöver jag vara med och tycka, eller räcker det att jag får veta?
+3. Struktur är ibland ett stöd och ibland ett hinder. Olika behov av struktur är lika legitima.</div></div>
+<div class="expander"><button type="button"><span>Egna anteckningar</span><span class="chev">⌄</span></button><div class="text">Max 10 minuter.
+Bakgrund: Thompsons beroendetyper (dela resurser, lämna över i kedja, samordna hela tiden) och polaritetstänkande (Barry Johnson).
+Kan kopplas kort till SCARF, som gruppen känner igen: otydliga beslut påverkar visshet och autonomi.</div></div>
 </div></article>
 
 <article class="block" data-type="Beslut">
-<div class="block-head"><div class="time">13.45–13.55<span class="duration">10 min</span></div><h2>Välj två arbetssätt</h2><span class="type">Beslut</span></div>
+<div class="block-head"><div class="time">13.40–13.50<span class="duration">10 min</span></div><h2>Välj två arbetssätt</h2><span class="type">Beslut</span></div>
 <div class="expanders">
-<div class="expander"><button type="button"><span>Innehåll</span><span class="chev">⌄</span></button><div class="text">Förval från tavlan: nyplaceringsgången, placeringar och omplaceringar, information som kommer in sent, listorna vi arbetar i, våra möten.
-Kriterier: berör många, återkommer de närmaste månaderna, görs på olika sätt eller skaver, och vi äger det själva.
-Var och en väljer tyst två, sedan prickar. De två med flest prickar tas vidare.</div></div>
-<div class="expander"><button type="button"><span>Egna anteckningar</span><span class="chev">⌄</span></button><div class="text">Mötena står i alla tre beroendekolumnerna på tavlan. Troligen fattas, eller fattas inte, besluten där.
+<div class="expander"><button type="button"><span>Innehåll</span><span class="chev">⌄</span></button><div class="text">Output: Två arbetssätt som vi arbetar vidare med i dag.
+
+Förslag från er skiss: nyplaceringsgången, placeringar och omplaceringar, information som kommer in sent, listorna vi arbetar i, våra möten.
+Var och en väljer tyst två. Sedan sätter alla prickar. De två med flest prickar går vidare.</div></div>
+<div class="expander"><button type="button"><span>Egna anteckningar</span><span class="chev">⌄</span></button><div class="text">Kriterier för förvalet: berör många, återkommer de närmaste månaderna, görs på olika sätt eller skaver, och gruppen äger det själv.
+Mötena står i alla tre beroendekolumnerna på tavlan. Troligen fattas, eller fattas inte, besluten där.
 Skydda minoriteten: ge var och en en extra prick för 'viktigast för mig', eller behåll rätten att själv lägga till ett av de två.</div></div>
 </div></article>
 
 <article class="block" data-type="Arbete">
-<div class="block-head"><div class="time">13.55–14.40<span class="duration">45 min</span></div><h2>Senaste fallet: var väntade vi, var gjorde vi olika, var behövdes ett beslut?</h2><span class="type">Arbete</span></div>
+<div class="block-head"><div class="time">13.50–14.35<span class="duration">45 min</span></div><h2>Senaste fallet: var väntade vi, var gjorde vi olika, var behövdes ett beslut?</h2><span class="type">Arbete</span></div>
 <div class="expanders">
-<div class="expander"><button type="button"><span>Innehåll</span><span class="chev">⌄</span></button><div class="text">Två trios, ett arbetssätt var.
-En person berättar det senaste verkliga fallet (5 min). De andra lyssnar efter tre saker: var vi väntade på varandra, var vi gjorde olika, och var ett beslut fattades eller borde ha fattats.
-Välj 2–3 sådana punkter. Markera för varje punkt på beslutskortet: nivå på beslutstrappan, vem som behöver tillfrågas och vem som bara behöver informeras, och om det är vårt eller ska till chefen.
+<div class="expander"><button type="button"><span>Innehåll</span><span class="chev">⌄</span></button><div class="text">Output: Ett beslutskort per arbetssätt.
+
+Två grupper om tre, ett arbetssätt per grupp.
+1. En person berättar det senaste verkliga fallet (5 min).
+2. De andra lyssnar efter tre saker: var vi väntade på varandra, var vi gjorde olika och var ett beslut fattades eller borde ha fattats.
+3. Välj 2–3 sådana punkter. Skriv för varje punkt på beslutskortet:
+   • Var på beslutstrappan ligger beslutet?
+   • Vem behöver tillfrågas, och vem räcker det att informera?
+   • Äger vi det själva, eller är det en fråga till ws3?
 'Vi är inte överens här' är ett godkänt svar.</div></div>
-<div class="expander"><button type="button"><span>Egna anteckningar</span><span class="chev">⌄</span></button><div class="text">Output: ett beslutskort per arbetssätt (blädderblock).
-Ingen full processkartläggning. Stanna bara vid beslutspunkter och väntpunkter.
-Gå mellan grupperna. Fråga: måste vi vänta här, eller räcker det att informera? Vad ger sammanflätningen oss här, och vad kostar den?</div></div>
+<div class="expander"><button type="button"><span>Egna anteckningar</span><span class="chev">⌄</span></button><div class="text">Ingen full processkartläggning. Stanna bara vid punkter där man väntar eller där ett beslut behövs.
+Gå mellan grupperna och fråga: måste vi vänta här, eller räcker det att informera? Vad ger det sammanflätade arbetssättet oss här, och vad kostar det?</div></div>
 </div></article>
 
 <article class="block" data-type="Paus">
-<div class="block-head"><div class="time">14.40–14.55<span class="duration">15 min</span></div><h2>Paus</h2><span class="type">Paus</span></div>
+<div class="block-head"><div class="time">14.35–14.50<span class="duration">15 min</span></div><h2>Paus</h2><span class="type">Paus</span></div>
 <div class="expanders">
 <div class="expander"><button type="button"><span>Innehåll</span><span class="chev">⌄</span></button><div class="text"></div></div>
 <div class="expander"><button type="button"><span>Egna anteckningar</span><span class="chev">⌄</span></button><div class="text"></div></div>
 </div></article>
 
 <article class="block" data-type="Dialog">
-<div class="block-head"><div class="time">14.55–15.15<span class="duration">20 min</span></div><h2>Beslutskorten i helgrupp</h2><span class="type">Dialog</span></div>
+<div class="block-head"><div class="time">14.50–15.10<span class="duration">20 min</span></div><h2>Beslutskorten i helgrupp</h2><span class="type">Dialog</span></div>
 <div class="expanders">
-<div class="expander"><button type="button"><span>Innehåll</span><span class="chev">⌄</span></button><div class="text">Varje trio visar sitt beslutskort (5 min var). Den andra trion kompletterar och ställer frågor.
-Vi samlar det som ska till chefen på ett eget ark.</div></div>
+<div class="expander"><button type="button"><span>Innehåll</span><span class="chev">⌄</span></button><div class="text">Output: Två granskade beslutskort, och frågorna till ws3 samlade på arket.
+
+Varje grupp visar sitt kort (5 min var). Den andra gruppen kompletterar och ställer frågor.
+Allt som ska till chefen flyttas till arket 'Till ws3'.</div></div>
 <div class="expander"><button type="button"><span>Egna anteckningar</span><span class="chev">⌄</span></button><div class="text">Lyft fram markerade oenigheter som värdefulla, inte som misslyckanden.
-Om kritik mot chefen tar över: använd sorteringen 'vårt eller till chefen' som ventil.</div></div>
+Om kritik mot chefen tar över: hänvisa till arket 'Till ws3'.</div></div>
 </div></article>
 
 <article class="block" data-type="Överenskommelse">
-<div class="block-head"><div class="time">15.15–15.35<span class="duration">20 min</span></div><h2>Gemensamt och eget, och vad vi behöver våga säga</h2><span class="type">Överenskommelse</span></div>
+<div class="block-head"><div class="time">15.10–15.30<span class="duration">20 min</span></div><h2>Gemensamt och eget, och vad vi behöver våga säga</h2><span class="type">Överenskommelse</span></div>
 <div class="expanders">
-<div class="expander"><button type="button"><span>Innehåll</span><span class="chev">⌄</span></button><div class="text">För varje arbetssätt: 2–3 saker som alla gör likadant (gemensamt och obligatoriskt) och 2–3 saker där var och en får göra på sitt sätt (eget).
-Formulera ett tillägg till spelreglerna om hur vi säger till, till exempel: 'Är jag osäker på om något är beslutat frågar jag: är det här beslutat, och av vem?' eller 'Gör jag på ett annat sätt än det gemensamma säger jag det.'</div></div>
-<div class="expander"><button type="button"><span>Egna anteckningar</span><span class="chev">⌄</span></button><div class="text">Output: lista gemensamt och eget, plus en ny spelregel.
-Båda kolumnerna är legitima. Undvik att 'gemensamt' blir det fina och 'eget' det fula.</div></div>
+<div class="expander"><button type="button"><span>Innehåll</span><span class="chev">⌄</span></button><div class="text">Output: En lista med gemensamt och eget för de två arbetssätten, och en ny spelregel.
+
+För varje arbetssätt:
+• 2–3 saker som alla gör likadant (gemensamt och obligatoriskt).
+• 2–3 saker där var och en får göra på sitt sätt (eget).
+Formulera sedan en ny spelregel om hur vi säger till, till exempel:
+'Är jag osäker på om något är beslutat frågar jag: är det här beslutat, och av vem?'
+'Gör jag på ett annat sätt än det gemensamma säger jag det.'</div></div>
+<div class="expander"><button type="button"><span>Egna anteckningar</span><span class="chev">⌄</span></button><div class="text">Båda kolumnerna är legitima. Undvik att 'gemensamt' blir det fina och 'eget' det fula.</div></div>
 </div></article>
 
 <article class="block" data-type="Överenskommelse">
-<div class="block-head"><div class="time">15.35–15.55<span class="duration">20 min</span></div><h2>Åtaganden och lista till uppdragsgivaren</h2><span class="type">Överenskommelse</span></div>
+<div class="block-head"><div class="time">15.30–15.50<span class="duration">20 min</span></div><h2>Åtaganden och arket till ws3</h2><span class="type">Överenskommelse</span></div>
 <div class="expanders">
-<div class="expander"><button type="button"><span>Innehåll</span><span class="chev">⌄</span></button><div class="text">Var och en, och gruppen gemensamt: vad prövar vi fram till ws3? 2–3 konkreta åtaganden.
-Läs upp listan över gråzoner och beslut som går vidare till uppdragsgivaren, så att alla vet exakt vad som går vidare.</div></div>
-<div class="expander"><button type="button"><span>Egna anteckningar</span><span class="chev">⌄</span></button><div class="text">Fast tid som inte flyttas, hellre en ofärdig genomgång av fallen än inga åtaganden. Det var åtagandena som föll bort på ws1.
-Åtagandena följs upp på ws3 tillsammans med baslinjen från enkäterna.</div></div>
+<div class="expander"><button type="button"><span>Innehåll</span><span class="chev">⌄</span></button><div class="text">Output: 2–3 åtaganden att pröva fram till ws3, och ett genomgånget ark med frågor till ws3.
+
+• Var och en, och gruppen gemensamt: vad prövar vi fram till ws3?
+• Läs upp arket 'Till ws3' högt, så att alla vet exakt vad som tas upp när chefen är med.</div></div>
+<div class="expander"><button type="button"><span>Egna anteckningar</span><span class="chev">⌄</span></button><div class="text">Fast tid som inte flyttas. Hellre en ofärdig genomgång av fallen än inga åtaganden. Det var åtagandena som föll bort på ws1.
+Åtagandena följs upp på ws3.</div></div>
 </div></article>
 
 <article class="block" data-type="Avslutning">
-<div class="block-head"><div class="time">15.55–16.00<span class="duration">5 min</span></div><h2>Avrundning</h2><span class="type">Avslutning</span></div>
+<div class="block-head"><div class="time">15.50–16.00<span class="duration">10 min</span></div><h2>Avrundning</h2><span class="type">Avslutning</span></div>
 <div class="expanders">
-<div class="expander"><button type="button"><span>Innehåll</span><span class="chev">⌄</span></button><div class="text">En mening var: vad tar jag med mig?
-Vad händer fram till ws3.</div></div>
+<div class="expander"><button type="button"><span>Innehåll</span><span class="chev">⌄</span></button><div class="text">Output: Alla vet vad som händer fram till ws3.
+
+• En mening var: vad tar jag med mig?
+• Vad händer nu: sammanställning skickas ut, åtagandena prövas, och på ws3 är chefen med.</div></div>
 <div class="expander"><button type="button"><span>Egna anteckningar</span><span class="chev">⌄</span></button><div class="text">Fotografera alla ark. Skicka en kort sammanställning på gruppnivå efteråt.</div></div>
 </div></article>
 </section>
@@ -141,5 +186,6 @@ document.querySelectorAll('.expander button').forEach(btn=>{
 });
 document.getElementById('openAll').addEventListener('click',()=>document.querySelectorAll('.expander').forEach(x=>x.classList.add('open')));
 document.getElementById('closeAll').addEventListener('click',()=>document.querySelectorAll('.expander').forEach(x=>x.classList.remove('open')));
+document.getElementById('printPdf').addEventListener('click',()=>{document.querySelectorAll('.expander').forEach(x=>x.classList.add('open'));window.print();});
 </script>
 </body></html>

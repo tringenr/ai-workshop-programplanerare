@@ -47,6 +47,7 @@ iframe{display:block;width:100%;height:calc(100% - 64px);border:0;background:#ff
 <option value="4-nov-rollworkshop-rfsu-app.html">4 nov rollworkshop RFSU</option>
 <option value="26-nov-ws2-vfu-samordnare.html">26 nov ws2 VFU-samordnare</option>
 </select>
+<button id="printBtn">Skriv ut som PDF</button>
 <button id="newProgramBtn" class="primary">+ Nytt program</button>
 </div>
 <iframe id="view" title="Program" src="AI-organisationspsykologens-vardag.html"></iframe>
@@ -113,6 +114,15 @@ if(q&&[...select.options].some(o=>o.value===q)){select.value=q;view.src=resolveS
 select.addEventListener('change',()=>{
   view.src=resolveSrc(select.value);
   if(!select.value.startsWith('custom:')) history.replaceState(null,'','?program='+encodeURIComponent(select.value));
+});
+
+/* ---- print current program (all text boxes open) ---- */
+document.getElementById('printBtn').addEventListener('click',()=>{
+  try{
+    const w=view.contentWindow,d=w.document;
+    d.querySelectorAll('.expander').forEach(x=>x.classList.add('open'));
+    w.focus();w.print();
+  }catch(e){window.open(view.src,'_blank');}
 });
 
 /* ---- editor ---- */
@@ -252,7 +262,7 @@ h1{font:700 clamp(34px,5vw,58px)/1 Montserrat,sans-serif;letter-spacing:-.045em;
 .expander{padding:0 18px 16px}.expander+ .expander{border-left:1px solid var(--line)}.expander button{width:100%;display:flex;justify-content:space-between;align-items:center;gap:12px;background:none;border:0;padding:14px 0 8px;text-align:left;color:var(--ink);font:700 14px Montserrat,sans-serif;cursor:pointer}
 .chev{font-size:18px;transition:transform .18s ease}.expander.open .chev{transform:rotate(180deg)}
 .text{position:relative;color:#5f4a56;font-size:15px;line-height:1.5;white-space:pre-line;max-height:3.2em;overflow:hidden}.text:after{content:"";position:absolute;inset:auto 0 0 0;height:1.2em;background:linear-gradient(transparent,#fff)}.expander.open .text{max-height:none}.expander.open .text:after{display:none}
-.block[data-type="Paus"]{background:#f7f2ef}.block[data-type="Paus"] .type{background:#ece4df;color:#66534a}
+.block[data-type="Bakgrund"]{background:#fbf5ef}.block[data-type="Bakgrund"] .type{background:#eee2cf;color:#6b5323}.block[data-type="Paus"]{background:#f7f2ef}.block[data-type="Paus"] .type{background:#ece4df;color:#66534a}
 .block[data-type="Färdighet"] .type{background:#e9f3ef;color:#276454}.block[data-type="Simulering"] .type{background:#ece9f8;color:#56408c}.block[data-type="Överenskommelse"] .type{background:#fff0d8;color:#85590f}
 @media(max-width:760px){main{padding:26px 14px 50px}.block-head{grid-template-columns:1fr auto}.time{grid-column:1/-1}.expanders{grid-template-columns:1fr}.expander+ .expander{border-left:0;border-top:1px solid var(--line)}}
 @media print{body{background:#fff}.toolbar{display:none}.block{box-shadow:none;break-inside:avoid}.expander{display:block}.text{max-height:none}.text:after{display:none}}
@@ -264,7 +274,7 @@ h1{font:700 clamp(34px,5vw,58px)/1 Montserrat,sans-serif;letter-spacing:-.045em;
 <div class="eyebrow">Programplanerare · ${startT}–${endT}</div>
 <h1>${escapeHtml(title)}</h1>
 <p class="subtitle">${escapeHtml(subtitle)}</p>
-<div class="toolbar"><button id="openAll">Öppna alla textrutor</button><button id="closeAll">Stäng alla</button></div>
+<div class="toolbar"><button id="openAll">Öppna alla textrutor</button><button id="closeAll">Stäng alla</button><button id="printPdf">Skriv ut som PDF</button></div>
 </header>
 
 <section class="timeline">
@@ -277,6 +287,7 @@ document.querySelectorAll('.expander button').forEach(btn=>{
 });
 document.getElementById('openAll').addEventListener('click',()=>document.querySelectorAll('.expander').forEach(x=>x.classList.add('open')));
 document.getElementById('closeAll').addEventListener('click',()=>document.querySelectorAll('.expander').forEach(x=>x.classList.remove('open')));
+document.getElementById('printPdf').addEventListener('click',()=>{document.querySelectorAll('.expander').forEach(x=>x.classList.add('open'));window.print();});
 <\/script>
 </body></html>`;
 }
